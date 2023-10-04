@@ -11,6 +11,7 @@
 		7C0D07392ACC8B45002DDD95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D07382ACC8B45002DDD95 /* ContentView.swift */; };
 		7C0D073B2ACC8B47002DDD95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0D073A2ACC8B47002DDD95 /* Assets.xcassets */; };
 		7C0D073E2ACC8B47002DDD95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0D073D2ACC8B47002DDD95 /* Preview Assets.xcassets */; };
+		7C7D8F862ACDA469009910A5 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C7D8F852ACDA469009910A5 /* Theme.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		7C0D07382ACC8B45002DDD95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C0D073A2ACC8B47002DDD95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C0D073D2ACC8B47002DDD95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7C7D8F852ACDA469009910A5 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +53,9 @@
 		7C0D07352ACC8B45002DDD95 /* AppleWatchStore */ = {
 			isa = PBXGroup;
 			children = (
-				7C0D07362ACC8B45002DDD95 /* AppleWatchStoreApp.swift */,
-				7C0D07382ACC8B45002DDD95 /* ContentView.swift */,
-				7C0D073A2ACC8B47002DDD95 /* Assets.xcassets */,
+				7C7D8F872ACDA477009910A5 /* Views */,
+				7C7D8F842ACDA457009910A5 /* App */,
+				7C7D8F892ACDA490009910A5 /* Utilities */,
 				7C0D073C2ACC8B47002DDD95 /* Preview Content */,
 			);
 			path = AppleWatchStore;
@@ -65,6 +67,47 @@
 				7C0D073D2ACC8B47002DDD95 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7C7D8F832ACDA450009910A5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7C7D8F882ACDA488009910A5 /* Supporting Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7C7D8F842ACDA457009910A5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7C0D07362ACC8B45002DDD95 /* AppleWatchStoreApp.swift */,
+				7C0D07382ACC8B45002DDD95 /* ContentView.swift */,
+				7C0D073A2ACC8B47002DDD95 /* Assets.xcassets */,
+				7C7D8F852ACDA469009910A5 /* Theme.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7C7D8F872ACDA477009910A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C7D8F832ACDA450009910A5 /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7C7D8F882ACDA488009910A5 /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		7C7D8F892ACDA490009910A5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C7D8F862ACDA469009910A5 /* Theme.xcassets in Resources */,
 				7C0D073E2ACC8B47002DDD95 /* Preview Assets.xcassets in Resources */,
 				7C0D073B2ACC8B47002DDD95 /* Assets.xcassets in Resources */,
 			);
