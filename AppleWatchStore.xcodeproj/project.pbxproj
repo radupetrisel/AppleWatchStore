@@ -15,6 +15,10 @@
 		7C7D8F8B2ACDA590009910A5 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D8F8A2ACDA590009910A5 /* ScaledFont.swift */; };
 		7C7D8F8D2ACDAA3F009910A5 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D8F8C2ACDAA3F009910A5 /* SectionHeader.swift */; };
 		7C7D8F8F2ACDAAF2009910A5 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D8F8E2ACDAAF2009910A5 /* Collection+Extension.swift */; };
+		7C7D8F912ACDB1F4009910A5 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D8F902ACDB1F4009910A5 /* ShapeStyle+Extension.swift */; };
+		7C7D8F932ACDB66F009910A5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D8F922ACDB66F009910A5 /* CardView.swift */; };
+		7CC3785E2AD579F3004E611F /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3785D2AD579F3004E611F /* CustomButtonStyle.swift */; };
+		7CC378602AD57BD7004E611F /* ButtonStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3785F2AD57BD7004E611F /* ButtonStyle+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		7C7D8F8A2ACDA590009910A5 /* ScaledFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		7C7D8F8C2ACDAA3F009910A5 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		7C7D8F8E2ACDAAF2009910A5 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		7C7D8F902ACDB1F4009910A5 /* ShapeStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extension.swift"; sourceTree = "<group>"; };
+		7C7D8F922ACDB66F009910A5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		7CC3785D2AD579F3004E611F /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		7CC3785F2AD57BD7004E611F /* ButtonStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,7 @@
 		7C7D8F882ACDA488009910A5 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
+				7C7D8F922ACDB66F009910A5 /* CardView.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -115,6 +124,9 @@
 				7C7D8F8A2ACDA590009910A5 /* ScaledFont.swift */,
 				7C7D8F8C2ACDAA3F009910A5 /* SectionHeader.swift */,
 				7C7D8F8E2ACDAAF2009910A5 /* Collection+Extension.swift */,
+				7C7D8F902ACDB1F4009910A5 /* ShapeStyle+Extension.swift */,
+				7CC3785D2AD579F3004E611F /* CustomButtonStyle.swift */,
+				7CC3785F2AD57BD7004E611F /* ButtonStyle+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -190,7 +202,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C7D8F932ACDB66F009910A5 /* CardView.swift in Sources */,
 				7C7D8F8D2ACDAA3F009910A5 /* SectionHeader.swift in Sources */,
+				7CC3785E2AD579F3004E611F /* CustomButtonStyle.swift in Sources */,
+				7CC378602AD57BD7004E611F /* ButtonStyle+Extension.swift in Sources */,
+				7C7D8F912ACDB1F4009910A5 /* ShapeStyle+Extension.swift in Sources */,
 				7C7D8F8B2ACDA590009910A5 /* ScaledFont.swift in Sources */,
 				7C0D07392ACC8B45002DDD95 /* ContentView.swift in Sources */,
 				7C0D07372ACC8B45002DDD95 /* AppleWatchStoreApp.swift in Sources */,
