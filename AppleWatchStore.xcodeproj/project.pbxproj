@@ -26,6 +26,7 @@
 		7CEABC462AE2B7FF0055F213 /* PopularSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEABC452AE2B7FF0055F213 /* PopularSection.swift */; };
 		7CEABC482AE2BCC30055F213 /* CategoryListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEABC472AE2BCC30055F213 /* CategoryListItem.swift */; };
 		7CEABC4A2AE2BD830055F213 /* CategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEABC492AE2BD830055F213 /* CategorySection.swift */; };
+		7CEABC4C2AE2BF7B0055F213 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEABC4B2AE2BF7B0055F213 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		7CEABC452AE2B7FF0055F213 /* PopularSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularSection.swift; sourceTree = "<group>"; };
 		7CEABC472AE2BCC30055F213 /* CategoryListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListItem.swift; sourceTree = "<group>"; };
 		7CEABC492AE2BD830055F213 /* CategorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySection.swift; sourceTree = "<group>"; };
+		7CEABC4B2AE2BF7B0055F213 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				7C7D8F882ACDA488009910A5 /* Supporting Views */,
+				7CEABC4B2AE2BF7B0055F213 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				7CC378622AD58024004E611F /* BrowseSection.swift in Sources */,
 				7CEABC4A2AE2BD830055F213 /* CategorySection.swift in Sources */,
 				7C7D8F8D2ACDAA3F009910A5 /* SectionHeader.swift in Sources */,
+				7CEABC4C2AE2BF7B0055F213 /* HomeView.swift in Sources */,
 				7C1ED4572AD98F28000221B7 /* GridProductItem.swift in Sources */,
 				7CC3785E2AD579F3004E611F /* CustomButtonStyle.swift in Sources */,
 				7CC378602AD57BD7004E611F /* ButtonStyle+Extension.swift in Sources */,
