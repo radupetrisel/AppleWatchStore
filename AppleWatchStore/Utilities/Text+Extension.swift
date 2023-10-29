@@ -17,4 +17,9 @@ extension Text {
         let condensed = UIFont.systemFont(ofSize: size, weight: .heavy, width: .condensed)
         return self.font(Font(condensed))
     }
+    
+    func bold(ofSize size: CGFloat = 12) -> Text {
+        let condensed = UIFont.systemFont(ofSize: size, weight: .bold, width: .condensed)
+        return self.font(Font(condensed))
+    }
 }
