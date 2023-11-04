@@ -9,7 +9,24 @@ import SwiftUI
 
 struct FavoritesView: View {
     var body: some View {
-        Text("Favorites view")
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 70) {
+                    ForEach(0..<3) { item in
+                        NavigationLink {
+                            
+                        } label: {
+                            WideProductItem()
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.top, 60)
+            }
+            .background(.baseBackground)
+            .navigationTitle("MY FAVORITES")
+            .navigationBarTitleDisplayMode(.large)
+        }
     }
 }
 
