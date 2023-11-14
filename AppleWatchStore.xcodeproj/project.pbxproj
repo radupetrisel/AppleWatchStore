@@ -16,6 +16,7 @@
 		7C15B3402AD991FC005E8FAC /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15B33F2AD991FC005E8FAC /* Text+Extension.swift */; };
 		7C1ED4572AD98F28000221B7 /* GridProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1ED4562AD98F28000221B7 /* GridProductItem.swift */; };
 		7C71E13B2AF6D40100EA3F39 /* WideProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C71E13A2AF6D40100EA3F39 /* WideProductItem.swift */; };
+		7C71E13F2AF6D87B00EA3F39 /* ProductDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C71E13E2AF6D87B00EA3F39 /* ProductDetailDescriptionView.swift */; };
 		7C7D8F862ACDA469009910A5 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C7D8F852ACDA469009910A5 /* Theme.xcassets */; };
 		7C7D8F8B2ACDA590009910A5 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D8F8A2ACDA590009910A5 /* ScaledFont.swift */; };
 		7C7D8F8D2ACDAA3F009910A5 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D8F8C2ACDAA3F009910A5 /* SectionHeader.swift */; };
@@ -48,6 +49,7 @@
 		7C15B33F2AD991FC005E8FAC /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		7C1ED4562AD98F28000221B7 /* GridProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridProductItem.swift; sourceTree = "<group>"; };
 		7C71E13A2AF6D40100EA3F39 /* WideProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideProductItem.swift; sourceTree = "<group>"; };
+		7C71E13E2AF6D87B00EA3F39 /* ProductDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDescriptionView.swift; sourceTree = "<group>"; };
 		7C7D8F852ACDA469009910A5 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
 		7C7D8F8A2ACDA590009910A5 /* ScaledFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		7C7D8F8C2ACDAA3F009910A5 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
@@ -115,6 +117,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		7C71E13C2AF6D85700EA3F39 /* Product Detail */ = {
+			isa = PBXGroup;
+			children = (
+				7C71E13D2AF6D86100EA3F39 /* Supporting Views */,
+				7C71E13E2AF6D87B00EA3F39 /* ProductDetailDescriptionView.swift */,
+			);
+			path = "Product Detail";
+			sourceTree = "<group>";
+		};
+		7C71E13D2AF6D86100EA3F39 /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
 		7C7D8F832ACDA450009910A5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +156,7 @@
 		7C7D8F872ACDA477009910A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7C71E13C2AF6D85700EA3F39 /* Product Detail */,
 				7CEABC4F2AE2C40C0055F213 /* Favorites */,
 				7CEABC4E2AE2C4020055F213 /* Cart */,
 				7CEABC4D2AE2C3F80055F213 /* Products */,
@@ -322,6 +341,7 @@
 				7CEABC482AE2BCC30055F213 /* CategoryListItem.swift in Sources */,
 				7C0D07372ACC8B45002DDD95 /* AppleWatchStoreApp.swift in Sources */,
 				7CEABC532AE2C42E0055F213 /* CartView.swift in Sources */,
+				7C71E13F2AF6D87B00EA3F39 /* ProductDetailDescriptionView.swift in Sources */,
 				7C7D8F8F2ACDAAF2009910A5 /* Collection+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
