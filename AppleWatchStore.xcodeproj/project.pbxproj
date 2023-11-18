@@ -25,6 +25,8 @@
 		7C7D8F932ACDB66F009910A5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D8F922ACDB66F009910A5 /* CardView.swift */; };
 		7C8A44732B09557300D3C58E /* WristItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8A44722B09557300D3C58E /* WristItem.swift */; };
 		7C8A44752B09561600D3C58E /* WristSizesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8A44742B09561600D3C58E /* WristSizesView.swift */; };
+		7C8A44772B0956AA00D3C58E /* WifiCellularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8A44762B0956AA00D3C58E /* WifiCellularView.swift */; };
+		7C8A44792B09571A00D3C58E /* ConnectivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8A44782B09571A00D3C58E /* ConnectivityView.swift */; };
 		7CC3785E2AD579F3004E611F /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3785D2AD579F3004E611F /* CustomButtonStyle.swift */; };
 		7CC378602AD57BD7004E611F /* ButtonStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3785F2AD57BD7004E611F /* ButtonStyle+Extension.swift */; };
 		7CC378622AD58024004E611F /* BrowseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC378612AD58024004E611F /* BrowseSection.swift */; };
@@ -62,6 +64,8 @@
 		7C7D8F922ACDB66F009910A5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7C8A44722B09557300D3C58E /* WristItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WristItem.swift; sourceTree = "<group>"; };
 		7C8A44742B09561600D3C58E /* WristSizesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WristSizesView.swift; sourceTree = "<group>"; };
+		7C8A44762B0956AA00D3C58E /* WifiCellularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiCellularView.swift; sourceTree = "<group>"; };
+		7C8A44782B09571A00D3C58E /* ConnectivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityView.swift; sourceTree = "<group>"; };
 		7CC3785D2AD579F3004E611F /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		7CC3785F2AD57BD7004E611F /* ButtonStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Extension.swift"; sourceTree = "<group>"; };
 		7CC378612AD58024004E611F /* BrowseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSection.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				7CF42ED82B03F72C001E9E58 /* SizeItem.swift */,
 				7C8A44742B09561600D3C58E /* WristSizesView.swift */,
 				7C8A44722B09557300D3C58E /* WristItem.swift */,
+				7C8A44762B0956AA00D3C58E /* WifiCellularView.swift */,
+				7C8A44782B09571A00D3C58E /* ConnectivityView.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -340,7 +346,9 @@
 				7C146AE82AE95E4A001BCD04 /* FilterView.swift in Sources */,
 				7CEABC5B2AE2C4F00055F213 /* Theme.swift in Sources */,
 				7CEABC4C2AE2BF7B0055F213 /* HomeView.swift in Sources */,
+				7C8A44792B09571A00D3C58E /* ConnectivityView.swift in Sources */,
 				7C1ED4572AD98F28000221B7 /* GridProductItem.swift in Sources */,
+				7C8A44772B0956AA00D3C58E /* WifiCellularView.swift in Sources */,
 				7CC3785E2AD579F3004E611F /* CustomButtonStyle.swift in Sources */,
 				7CEABC512AE2C4200055F213 /* ProductsView.swift in Sources */,
 				7CC378602AD57BD7004E611F /* ButtonStyle+Extension.swift in Sources */,
