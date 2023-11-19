@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct AppleWatchStoreApp: App {
+    @State private var manager = DataManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(manager)
+                .task {
+                    await manager.initializeData()
+                }
         }
     }
 }
