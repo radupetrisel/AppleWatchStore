@@ -8,9 +8,12 @@
 import Foundation
 import Observation
 import OSLog
+import SwiftData
 
 @Observable
 final class DataManager {
+    private static let hasSetupDbKey = "hasSetupDb"
+    
     @ObservationIgnored
     private let logger = Logger()
     
@@ -20,12 +23,52 @@ final class DataManager {
     var productData = [ProductData]()
     var filterData = [ProductFilterData]()
     
+    var dbInitalizationInProgress = false
+    
+    let modelContainer = try! ModelContainer(for: Product.self, ProductFilter.self)
+    
+    var hasSetUpDb: Bool {
+        didSet {
+            UserDefaults.standard.setValue(hasSetUpDb, forKey: Self.hasSetupDbKey)
+        }
+    }
+    
+    init() {
+        hasSetUpDb = UserDefaults.standard.object(forKey: Self.hasSetupDbKey) as? Bool ?? false
+    }
+    
     func initializeData() async {
+        guard !hasSetUpDb else { return }
+        
+        dbInitalizationInProgress = true
+        
         productData = await fetchProducts()
         filterData = await fetchProductFilters()
         
         dump(productData)
         dump(filterData)
+        
+        guard productData.isNotEmpty && filterData.isNotEmpty else { return }
+        
+        Task { @MainActor in
+            let products = productData.map(Product.init(productData:))
+            let filters = filterData.map(ProductFilter.init(productFilterData:))
+            
+            for product in products {
+                modelContainer.mainContext.insert(product)
+            }
+            
+            for filter in filters {
+                modelContainer.mainContext.insert(filter)
+            }
+            
+            dbInitalizationInProgress = false
+            hasSetUpDb = true
+            
+            print("========= DB DATA =========")
+            dump(products)
+            dump(filters)
+        }
     }
     
     private func fetchProducts() async -> [ProductData] {
