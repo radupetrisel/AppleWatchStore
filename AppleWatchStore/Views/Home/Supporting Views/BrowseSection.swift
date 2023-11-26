@@ -15,8 +15,8 @@ struct BrowseSection: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(0..<4) { _ in
-                        CardView()
+                    ForEach(Constants.featuredProducts) { item in
+                        CardView(product: item)
                             .frame(width: UIScreen.main.bounds.width - 30)
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }

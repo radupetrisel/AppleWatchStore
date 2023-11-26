@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(DataManager.self) private var manager
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -15,6 +17,13 @@ struct HomeView: View {
             }
             .navigationTitle("WELCOME")
             .navigationBarTitleDisplayMode(.large)
+            .overlay {
+                if manager.dbInitalizationInProgress {
+                    ProgressView("Loading")
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .background()
+                }
+            }
             .background(.baseBackground)
         }
     }
@@ -28,6 +37,15 @@ struct HomeView: View {
     }
 }
 
-#Preview {
+#Preview("Loaded") {
     HomeView()
+        .environment(DataManager())
+}
+
+#Preview("Loading") {
+    let dataManager = DataManager()
+    dataManager.dbInitalizationInProgress = true
+    
+    return HomeView()
+        .environment(dataManager)
 }

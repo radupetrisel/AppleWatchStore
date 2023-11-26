@@ -14,8 +14,8 @@ struct CategorySection: View {
                 .padding(.horizontal)
             
             VStack {
-                ForEach(0..<5) { item in
-                    CategoryListItem()
+                ForEach(Constants.categories, id: \.name) { item in
+                    CategoryListItem(item: item)
                 }
             }
         }

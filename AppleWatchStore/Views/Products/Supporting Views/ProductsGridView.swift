@@ -5,16 +5,19 @@
 //  Created by Radu Petrisel on 25.10.2023.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ProductsGridView: View {
+    @Query private var products: [Product]
+    
     var body: some View {
         VStack {
             LazyVGrid(columns: Constants.columns, spacing: 16) {
-                ForEach(0..<12) { _ in
+                ForEach(products) { product in
                     NavigationLink {
                     } label: {
-                        GridProductItem()
+                        GridProductItem(product: product)
                     }
                 .buttonStyle(.plain)
                 }
@@ -24,8 +27,8 @@ struct ProductsGridView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        ProductsGridView()
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        ProductsGridView()
+//    }
+//}
