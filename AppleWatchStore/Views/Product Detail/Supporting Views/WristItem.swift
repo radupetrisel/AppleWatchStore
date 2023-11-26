@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct WristItem: View {
+    let wristSize: WristSize
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Large")
+            Text(wristSize.size)
                 .condensedLowercased(.bold, size: 24)
             
-            Text("Fits 165-210mm wrists.")
+            Text(wristSize.desc)
                 .condensed(.light, size: 16)
             
             Spacer()
@@ -24,6 +26,6 @@ struct WristItem: View {
     }
 }
 
-#Preview {
-    WristItem()
-}
+//#Preview {
+//    WristItem()
+//}

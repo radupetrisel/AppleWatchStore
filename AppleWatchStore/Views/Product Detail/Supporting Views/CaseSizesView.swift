@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct CaseSizesView: View {
+    let caseSizes: [CaseSize]
+    
     var body: some View {
         VStack {
             SectionHeader(title: "Case sizes")
                 .padding(.bottom)
             
-            ForEach(0..<3) { item in
+            ForEach(caseSizes) { item in
                 Button { } label: {
-                    SizeItem()
+                    SizeItem(item: item)
                         .contentShape(.rect(cornerRadius: 10))
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
@@ -25,10 +27,9 @@ struct CaseSizesView: View {
                 .buttonStyle(.plain)
             }
         }
-        .padding(.horizontal)
     }
 }
 
-#Preview {
-    CaseSizesView()
-}
+//#Preview {
+//    CaseSizesView(caseSizes: )
+//}

@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct WristSizesView: View {
+    let wristSizes: [WristSize]
+    
     var body: some View {
         VStack {
             SectionHeader(title: "Wrist sizes")
                 .padding(.bottom)
             
-            ForEach(0..<3) { item in
+            ForEach(wristSizes) { wristSize in
                 Button { } label: {
-                    WristItem()
+                    WristItem(wristSize: wristSize)
                         .contentShape(.rect(cornerRadius: 10))
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
@@ -25,10 +27,9 @@ struct WristSizesView: View {
                 .buttonStyle(.plain)
             }
         }
-        .padding(.horizontal)
     }
 }
 
-#Preview {
-    WristSizesView()
-}
+//#Preview {
+//    WristSizesView()
+//}

@@ -74,6 +74,8 @@ extension Product {
     
     var title: String { "\(materialDisplay) \(finishDisplay) Case" }
     
+    var detailTitle: String { "\(materialDisplay) \(finishType) Case with \(bandDisplay)" }
+    
     var band: String { "\(image)-l" }
     
     var face: String { "\(materialType)-\(finishType)-l" }

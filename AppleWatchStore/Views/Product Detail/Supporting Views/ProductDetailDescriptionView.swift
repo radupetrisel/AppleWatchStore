@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ProductDetailDescriptionView: View {
+    let product: Product
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("Midnight Aluminium Case with Nike Sports Band")
+                Text(product.detailTitle)
                     .condensed(.bold, size: 34)
-                    .multilineTextAlignment(.leading)
                     .lineLimit(2)
                 
                 HStack(alignment: .center) {
@@ -39,16 +40,13 @@ struct ProductDetailDescriptionView: View {
                 }
                 .padding(.bottom, 5)
                 
-                Text("The aluminum case is lightweight and made from 100 percent recycled aerospace-grade alloy.\n\nThe Nike Sport Band is made from a durable high-performance fluoroelastomer with compression-molded perforations for breathability.")
+                Text(product.desc)
                     .condensed(.light, size: 16)
             }
-            .padding(.horizontal)
-            
-            Spacer()
         }
     }
 }
 
 #Preview {
-    ProductDetailDescriptionView()
+    ProductDetailDescriptionView(product: .default)
 }

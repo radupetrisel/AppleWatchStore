@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SizeItem: View {
+    let item: CaseSize
+    
     var body: some View {
         HStack(alignment: .lastTextBaseline) {
-            Text("49mm")
+            Text(item.size.uppercased())
                 .condensed(.bold, size: 24)
             
             Spacer()
@@ -18,7 +20,7 @@ struct SizeItem: View {
             Group {
                 Text("$")
                     .ultraLight()
-                + Text("999")
+                + Text(item.price)
                     .heavy()
             }
         }
@@ -26,6 +28,6 @@ struct SizeItem: View {
     }
 }
 
-#Preview {
-    SizeItem()
-}
+//#Preview {
+//    SizeItem()
+//}
