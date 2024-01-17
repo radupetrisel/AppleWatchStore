@@ -8,35 +8,40 @@
 import SwiftUI
 
 struct FilterSectionView: View {
+    @Binding var items: [ProductFilter]
+    
     var body: some View {
         VStack {
-            SectionHeader(title: "Section title here")
+            SectionHeader(title: items.first?.category.capitalized ?? "")
             LazyVGrid(columns: Constants.filterColumns, spacing: 10) {
-                ForEach(0..<5, id: \.self) { item in
-                    sectionItem
+                ForEach(items) { item in
+                    sectionItem(item: item)
                 }
             }
         }
         .padding(.horizontal)
     }
     
-    var sectionItem: some View {
+    func sectionItem(item: ProductFilter) -> some View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 4)
                     .frame(width: 24, height: 24)
                 
-                Image(.check)
+                Image(.customCheckmark)
             }
             
-            Text("Title goes here")
+            Text(item.title)
                 .condensed(.regular, size: 16)
             
             Spacer()
+        }
+        .onTapGesture {
+            item.isSelected.toggle()
         }
     }
 }
 
 #Preview {
-    FilterSectionView()
+    FilterSectionView(items: .constant([]))
 }

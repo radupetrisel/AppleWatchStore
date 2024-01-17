@@ -72,7 +72,7 @@ final class ProductData: Identifiable, Codable {
     
     enum CodingKeys: String, CodingKey {
         case id
-        case isFeatured = "isFeatured"
+        case isFeatured = "featured"
         case bandType = "band-type"
         case bandDisplay = "band-display"
         case series

@@ -5,9 +5,16 @@
 //  Created by Radu Petrisel on 25.10.2023.
 //
 
+import SwiftData
 import SwiftUI
 
 struct FilterView: View {
+    @Query private var productFilters: [ProductFilter]
+    
+    @State private var sections: [[ProductFilter]] = []
+    
+    private let categories = ["material", "finish", "band"]
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -20,6 +27,11 @@ struct FilterView: View {
                 }
             }
             .navigationTitle("Product filters")
+            .onAppear {
+                categories
+                    .map { category in productFilters.filter { $0.category == category } }
+                    .forEach { sections.append($0) }
+            }
             .safeAreaInset(edge: .bottom) {
                 filterStatus
             }
@@ -28,8 +40,8 @@ struct FilterView: View {
     
     var content: some View {
         VStack(spacing: 50) {
-            ForEach(0..<3) { item in
-                FilterSectionView()
+            ForEach($sections, id: \.self) { $section in
+                FilterSectionView(items: $section)
             }
         }
         .padding(.top, 20)
