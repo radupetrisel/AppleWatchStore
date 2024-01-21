@@ -47,6 +47,6 @@ struct ProductDetailDescriptionView: View {
     }
 }
 
-//#Preview {
-//    ProductDetailDescriptionView(product: .default)
-//}
+#Preview {
+    ProductDetailDescriptionView(product: .default)
+}

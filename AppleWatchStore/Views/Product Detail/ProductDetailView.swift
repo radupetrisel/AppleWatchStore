@@ -99,6 +99,6 @@ struct ProductDetailView: View {
     }
 }
 
-//#Preview {
-//    ProductDetailView()
-//}
+#Preview {
+    ProductDetailView(product: .default)
+}

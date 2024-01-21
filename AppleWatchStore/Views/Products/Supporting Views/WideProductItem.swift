@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct WideProductItem: View {
+    let product: Product
+    
     var body: some View {
         ZStack {
             HStack(alignment: .bottom, spacing: 0) {
                 VStack(spacing: 5) {
                     ZStack {
-                        Image(.sportBandProductRedL)
+                        Image(product.band)
                             .resizable()
                             .frame(width: 250, height: 250)
                         
-                        Image(.aluminumMidnightL)
+                        Image(product.face)
                             .resizable()
                             .frame(width: 250, height: 250)
                     }
@@ -36,14 +38,14 @@ struct WideProductItem: View {
                 
                 VStack(alignment: .trailing, spacing: -4) {
                     Text("$").ultraLight() +
-                    Text("999")
+                    Text(product.displayPrice)
                         .heavy()
                     
                     VStack(alignment: .trailing) {
-                        Text("Starlight Aluminium Case")
-                            .condensed(.bold, size: 14)
-                        Text("Braided Solo Loop")
-                            .condensed(.light, size: 14)
+                        Text(product.title)
+                            .condensed(.bold, size: 16)
+                        Text(product.bandDisplay)
+                            .condensed(.light, size: 16)
                     }
                 }
                 .foregroundStyle(.primary)
@@ -58,11 +60,17 @@ struct WideProductItem: View {
         .frame(maxWidth: .infinity, alignment: .bottom)
         .overlay(alignment: .topTrailing) {
             Constants.heart
+                .symbolVariant(product.isFavourite ? .fill : .none)
+                .onLongPressGesture(minimumDuration: 0.25) {
+                    product.isFavourite.toggle()
+                }
+                .font(.system(size: 24))
+                .padding(.top, 5)
         }
         .padding(.horizontal)
     }
 }
 
 #Preview {
-    WideProductItem()
+    WideProductItem(product: .default)
 }
