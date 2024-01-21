@@ -13,13 +13,13 @@ final class Product {
     @Attribute(.unique) var id: String
     
     let isFeatured: Bool
-    let bandType: String
+    let bandTypeString: String
     let bandDisplay: String
     let series: String
     let seriesDisplay: String
-    let materialType: String
+    let materialTypeString: String
     let materialDisplay: String
-    let finishType: String
+    let finishTypeString: String
     let finishDisplay: String
     let bandColorType: String
     let bandColorDisplay: String
@@ -38,13 +38,13 @@ final class Product {
     init(productData: ProductData) {
         id = UUID().uuidString
         isFeatured = productData.isFeatured
-        bandType = productData.bandType
+        bandTypeString = productData.bandType
         bandDisplay = productData.bandDisplay
         series = productData.series
         seriesDisplay = productData.seriesDisplay
-        materialType = productData.materialType
+        materialTypeString = productData.materialType
         materialDisplay = productData.materialDisplay
-        finishType = productData.finishType
+        finishTypeString = productData.finishType
         finishDisplay = productData.finishDisplay
         bandColorType = productData.bandColorType
         bandColorDisplay = productData.bandColorDisplay
@@ -74,13 +74,17 @@ extension Product {
     
     var title: String { "\(materialDisplay) \(finishDisplay) Case" }
     
-    var detailTitle: String { "\(materialDisplay) \(finishType) Case with \(bandDisplay)" }
+    var detailTitle: String { "\(materialDisplay) \(finishTypeString) Case with \(bandDisplay)" }
     
     var band: String { "\(image)-l" }
     
-    var face: String { "\(materialType)-\(finishType)-l" }
+    var face: String { "\(materialTypeString)-\(finishTypeString)-l" }
     
-    func createCartProductId(caseSize: String, wristSize: String) -> String {
-        return "\(id)-\(caseSize)-\(wristSize)-\(bandColorType)"
-    }
+    func createCartProductId(caseSize: String, wristSize: String) -> String { "\(id)-\(caseSize)-\(wristSize)-\(bandColorType)" }
+    
+    var bandType: ProductBandType { ProductBandType(rawValue: bandTypeString) ?? .none}
+    
+    var materialType: ProductMaterial { ProductMaterial(rawValue: materialTypeString) ?? .none }
+    
+    var finishType: ProductFinish { ProductFinish(rawValue: finishTypeString) ?? .none }
 }

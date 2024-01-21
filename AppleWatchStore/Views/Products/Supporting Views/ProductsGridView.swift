@@ -9,13 +9,14 @@ import SwiftData
 import SwiftUI
 
 struct ProductsGridView: View {
+    @Environment(ProductsFilter.self) var productsFilter
     @Query private var products: [Product]
     
     var body: some View {
         ScrollView {
             VStack {
                 LazyVGrid(columns: Constants.columns, spacing: 16) {
-                    ForEach(products) { product in
+                    ForEach(productsFilter.filterProducts(products: products)) { product in
                         NavigationLink {
                             ProductDetailView(product: product)
                         } label: {

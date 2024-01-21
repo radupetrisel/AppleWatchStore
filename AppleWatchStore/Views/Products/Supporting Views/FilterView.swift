@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FilterView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(ProductsFilter.self) var productsFilter
     @Query private var productFilters: [ProductFilter]
     
     @State private var sections: [[ProductFilter]] = []
@@ -27,11 +28,13 @@ struct FilterView: View {
                     closeButton
                 }
             }
-            .navigationTitle("Product filters")
+            .navigationTitle("PRODUCT FILTERS")
             .onAppear {
                 categories
                     .map { category in productFilters.filter { $0.category == category } }
                     .forEach { sections.append($0) }
+                
+                productsFilter.fetchSaved(filters: productFilters)
             }
             .safeAreaInset(edge: .bottom) {
                 filterStatus
@@ -58,7 +61,7 @@ struct FilterView: View {
             Button { 
               dismiss()
             } label: {
-                Text("Filter (0 ITEMS)")
+                Text("FILTER (^[\(productsFilter.filterCount) ITEM](inflect: true))")
                     .condensedLowercased(.medium, size: 24)
                     .foregroundStyle(.white)
             }

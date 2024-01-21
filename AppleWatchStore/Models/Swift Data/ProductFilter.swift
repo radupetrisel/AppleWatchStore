@@ -31,3 +31,16 @@ final class ProductFilter {
         isSelected = productFilterData.isSelected
     }
 }
+
+extension ProductFilter {
+    var spec: ProductSpecs {
+        switch category {
+        case "material":
+            return ProductSpecs.material(ProductMaterial(rawValue: type) ?? .none)
+        case "band":
+            return ProductSpecs.band(ProductBandType(rawValue: type) ?? .none)
+        default:
+            return ProductSpecs.finish(ProductFinish(rawValue: type) ?? .none)
+        }
+    }
+}

@@ -11,11 +11,13 @@ import SwiftUI
 @main
 struct AppleWatchStoreApp: App {
     @State private var manager = DataManager()
+    @State private var productsFilter = ProductsFilter()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(manager)
+                .environment(productsFilter)
                 .modelContainer(manager.modelContainer)
                 .task {
                     await manager.initializeData()
