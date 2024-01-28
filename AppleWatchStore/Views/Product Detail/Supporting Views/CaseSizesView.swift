@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CaseSizesView: View {
+    @Environment(ProductDetail.self) var productDetail
+    
     let caseSizes: [CaseSize]
     
     var body: some View {
@@ -16,17 +18,27 @@ struct CaseSizesView: View {
                 .padding(.bottom)
             
             ForEach(caseSizes) { item in
-                Button { } label: {
+                Button {
+                    productDetail.selectedCaseSize = item
+                } label: {
                     SizeItem(item: item)
                         .contentShape(.rect(cornerRadius: 10))
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(.baseMediumGray, lineWidth: 1)
+                                .stroke(strokeColor(for: item), lineWidth: lineWidth(for: item))
                         }
                 }
                 .buttonStyle(.plain)
             }
         }
+    }
+    
+    private func strokeColor(for caseSize: CaseSize) -> Color {
+        productDetail.selectedCaseSize == caseSize ? .baseStroke : .baseMediumGray
+    }
+    
+    private func lineWidth(for caseSize: CaseSize) -> CGFloat {
+        productDetail.selectedCaseSize == caseSize ? 2 : 1
     }
 }
 

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WristSizesView: View {
+    @Environment(ProductDetail.self) var productDetail
     let wristSizes: [WristSize]
     
     var body: some View {
@@ -16,17 +17,27 @@ struct WristSizesView: View {
                 .padding(.bottom)
             
             ForEach(wristSizes) { wristSize in
-                Button { } label: {
+                Button { 
+                    productDetail.selectedWristSize = wristSize
+                } label: {
                     WristItem(wristSize: wristSize)
                         .contentShape(.rect(cornerRadius: 10))
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(.baseMediumGray, lineWidth: 1)
+                                .stroke(strokeColor(for: wristSize), lineWidth: lineWidth(for: wristSize))
                         }
                 }
                 .buttonStyle(.plain)
             }
         }
+    }
+    
+    private func strokeColor(for wristSize: WristSize) -> Color {
+        productDetail.selectedWristSize == wristSize ? .baseStroke : .baseMediumGray
+    }
+    
+    private func lineWidth(for wristSize: WristSize) -> CGFloat {
+        productDetail.selectedWristSize == wristSize ? 2 : 1
     }
 }
 

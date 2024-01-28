@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AppleCareView: View {
+    @Environment(ProductDetail.self) var productDetail
+    
     var body: some View {
         VStack(spacing: 20) {
             SectionHeader(title: "AppleCare+ Coverage")
@@ -19,7 +21,9 @@ struct AppleCareView: View {
     }
     
     var noAppleCare: some View {
-        Button(action: {}) {
+        Button {
+            productDetail.selectedAppleCare = .none
+        } label: {
             VStack(alignment: .leading) {
                 Text("No AppleCare+")
                     .condensed(.bold, size: 18)
@@ -31,14 +35,16 @@ struct AppleCareView: View {
             .contentShape(RoundedRectangle(cornerRadius: 10))
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(.baseMediumGray, lineWidth: 1)
+                    .stroke(strokeColor(for: .none), lineWidth: lineWidth(for: .none))
             }
         }
         .buttonStyle(.plain)
     }
     
     var addAppleCare: some View {
-        Button(action: {}) {
+        Button {
+            productDetail.selectedAppleCare = .add
+        } label: {
             VStack(alignment: .leading) {
                 header
                 content
@@ -50,7 +56,7 @@ struct AppleCareView: View {
             .contentShape(RoundedRectangle(cornerRadius: 10))
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(.baseMediumGray, lineWidth: 1)
+                    .stroke(strokeColor(for: .add), lineWidth: lineWidth(for: .add))
             }
         }
         .buttonStyle(.plain)
@@ -99,8 +105,17 @@ struct AppleCareView: View {
         }
         .foregroundStyle(.baseMediumGray)
     }
+    
+    private func strokeColor(for appleCare: ProductAppleCareType) -> Color {
+        productDetail.selectedAppleCare == appleCare ? .baseStroke : .baseMediumGray
+    }
+    
+    private func lineWidth(for appleCare: ProductAppleCareType) -> CGFloat {
+        productDetail.selectedAppleCare == appleCare ? 2 : 1
+    }
 }
 
 #Preview {
     AppleCareView()
+        .environment(ProductDetail())
 }
