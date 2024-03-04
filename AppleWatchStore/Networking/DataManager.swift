@@ -25,7 +25,7 @@ final class DataManager {
     
     var dbInitalizationInProgress = false
     
-    let modelContainer = try! ModelContainer(for: Product.self, ProductFilter.self)
+    let modelContainer = try! ModelContainer(for: Product.self, ProductFilter.self, Review.self)
     
     var hasSetUpDb: Bool {
         didSet {
@@ -69,6 +69,13 @@ final class DataManager {
             dump(products)
             dump(filters)
         }
+    }
+    
+    @MainActor
+    func addProductReview(product: Product, data: ReviewData) {
+        let review = Review(title: data.title, summary: data.summary, name: data.name, rating: data.rating, creationDate: .now)
+        product.reviews.append(review)
+        modelContainer.mainContext.insert(review)
     }
     
     private func fetchProducts() async -> [ProductData] {

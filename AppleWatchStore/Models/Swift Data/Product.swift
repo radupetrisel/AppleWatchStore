@@ -35,6 +35,9 @@ final class Product {
     @Relationship(deleteRule: .cascade)
     var wristSizes: [WristSize]
     
+    @Relationship(deleteRule: .cascade)
+    var reviews: [Review]
+    
     init(productData: ProductData) {
         id = UUID().uuidString
         isFeatured = productData.isFeatured
@@ -56,6 +59,7 @@ final class Product {
         
         caseSizes = productData.caseSizes.map(CaseSize.init(caseSizeData:))
         wristSizes = productData.wristSizes.map(WristSize.init(wristSizeData:))
+        reviews = []
     }
 }
 
@@ -87,4 +91,6 @@ extension Product {
     var materialType: ProductMaterial { ProductMaterial(rawValue: materialTypeString) ?? .none }
     
     var finishType: ProductFinish { ProductFinish(rawValue: finishTypeString) ?? .none }
+    
+    var ratingAverage: Float { reviews.map { $0.rating }.reduce(0.0, +) / Float(reviews.count) }
 }

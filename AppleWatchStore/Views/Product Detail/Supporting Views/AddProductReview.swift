@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct AddProductReview: View {
+    @Environment(\.dismiss) var dismiss
+    @Environment(DataManager.self) var dataManager
+    
     @State private var rating: Float = 3
     @State private var reviewSummary = ""
     @State private var title = ""
     @State private var name = ""
+    
+    let product: Product
     
     var body: some View {
         NavigationStack {
@@ -24,19 +29,21 @@ struct AddProductReview: View {
                 Section {
                     TextEditor(text: $reviewSummary)
                     
-                    HStack {
-                        ForEach(0..<5) { item in
-                            Image(systemName: "star")
-                                .symbolVariant(.fill)
-                        }
-                    }
+                    RatingView(rating: $rating)
                 } header: {
                     Text("Write a review")
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Save") { }
+                    Button("Save") {
+                        withAnimation {
+                            let data = ReviewData(title: title, summary: reviewSummary, name: name, rating: rating)
+                            dataManager.addProductReview(product: product, data: data)
+                            
+                            dismiss()
+                        }
+                    }
                 }
             }
         }
@@ -44,5 +51,5 @@ struct AddProductReview: View {
 }
 
 #Preview {
-    AddProductReview()
+    AddProductReview(product: .default)
 }
