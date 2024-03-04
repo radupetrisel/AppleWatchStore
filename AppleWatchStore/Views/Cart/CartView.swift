@@ -5,10 +5,12 @@
 //  Created by Radu Petrisel on 20.10.2023.
 //
 
+import PassKit
 import SwiftUI
 
 struct CartView: View {
     @Environment(ShoppingCart.self) var cart
+    let paymentRequest = PKPaymentRequest()
     
     var body: some View {
         NavigationStack {
@@ -179,11 +181,24 @@ struct CartView: View {
                                     .offset(x: -8, y: 10)
                             }
                     }
+                    
+                    PayWithApplePayButton(
+                        .buy,
+                        request: paymentRequest,
+                        onPaymentAuthorizationChange: authorizationChange
+                    ) {
+                        
+                    }
+                    .frame(height: 50)
                 }
             }
             .padding()
         }
         .frame(height: 200)
+    }
+    
+    private func authorizationChange(phase: PayWithApplePayButtonPaymentAuthorizationPhase) {
+        cart.pay()
     }
 }
 

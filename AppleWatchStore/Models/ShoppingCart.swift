@@ -11,6 +11,8 @@ import SwiftData
 
 @Observable
 final class ShoppingCart: Identifiable {
+    private let paymentHandler = PaymentHandler()
+    
     let id = UUID()
     var quantity: Int = 0
     var cartTotal: Int = 0
@@ -21,6 +23,8 @@ final class ShoppingCart: Identifiable {
     var total: Double { products.reduce(Double.zero) { total, product in total + Double(product.caseAmount) * Double(product.quantity) } }
     
     var cartQuantity: Int { products.count }
+    
+    var paymentSucess = false
     
     func increment(product: CartProduct) {
         product.quantity += 1
@@ -63,6 +67,17 @@ final class ShoppingCart: Identifiable {
     func getTax() -> Double { total * 0.13 }
     
     func getOrderTotal() -> Double { total + getTax() }
+    
+    func pay() {
+        paymentHandler.startPayment(products: products, total: Int(total)) { success in
+            if success {
+                self.paymentSucess = success
+                self.products = []
+            } else {
+                print("Failure")
+            }
+        }
+    }
     
     private func updateProduct(_ product: CartProduct) {
         guard let index = products.firstIndex(where: { $0.id == product.id }) else {
