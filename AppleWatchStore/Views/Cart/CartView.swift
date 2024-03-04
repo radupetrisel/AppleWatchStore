@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct CartView: View {
+    @Environment(ShoppingCart.self) var cart
+    
     var body: some View {
         NavigationStack {
             List {
-                ForEach(0..<1) { item in
-                    cartItem
+                ForEach(cart.products, content: cartItem(product:))
+                    .onDelete(perform: cart.remove(atOffsets:))
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .alignmentGuide(.listRowSeparatorLeading, computeValue: { _ in 0
+                    })
+                    .background(.baseBackground)
+            }
+            .overlay {
+                if cart.products.isEmpty {
+                    ContentUnavailableView {
+                        Label("No products", systemImage: "cart")
+                    } description: {
+                        Text("Please add products.")
+                    }
                 }
-                .listRowSeparator(.hidden)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .alignmentGuide(.listRowSeparatorLeading, computeValue: { _ in 0
-                })
-                .background(.baseBackground)
             }
             .safeAreaInset(edge: .bottom) { cartTotals }
             .scrollIndicators(.hidden)
@@ -30,10 +40,10 @@ struct CartView: View {
         }
     }
     
-    var cartItem: some View {
+    func cartItem(product: CartProduct) -> some View {
         HStack(alignment: .bottom, spacing: 20) {
-            watchImage
-            watchDetails
+            watchImage(product: product)
+            watchDetails(product: product)
             
             Spacer()
         }
@@ -41,13 +51,13 @@ struct CartView: View {
         .frame(minWidth: 0, maxWidth: .infinity)
     }
     
-    var watchImage: some View {
+    func watchImage(product: CartProduct) -> some View {
         HStack {
             ZStack {
-                Image(.sportBandProductRedL)
+                Image(product.band)
                     .resizable()
                 
-                Image(.aluminumMidnightL)
+                Image(product.face)
                     .resizable()
             }
             .frame(width: 268, height: 268)
@@ -60,38 +70,41 @@ struct CartView: View {
         }
     }
     
-    var watchDetails: some View {
+    func watchDetails(product: CartProduct) -> some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
-                Text("Apple Watch Series 8 Apple Watch Series 8")
+                Text(product.productSeries)
                     .condensed(.black, size: 18)
                     .lineLimit(2)
                 
                 Group {
                     Text("$")
                         .ultraLight()
-                    + Text("999")
+                    + Text(product.displayPrice)
                         .heavy()
                 }
                 
-                Text("45mm")
+                Text(product.caseSize)
                     .condensed(.medium, size: 16)
-                Text("Starlight Aluminium Case")
+                Text("\(product.caseMaterial) \(product.caseFinish) Case")
                     .condensed(.medium, size: 16)
-                Text("Abyss Blue Braided Solo Loop")
+                Text("\(product.bandColor) \(product.bandName)")
                     .condensed(.light, size: 14)
-                Text("Loop Size: 99")
+                Text("Loop Size: \(product.wristSize)")
                     .condensed(.light, size: 14)
                 
                 HStack {
                     Image(.iconWifi)
                     Image(.attLogo)
                     Image(.icon5G)
+                        .opacity(product.cellularType == .wifiAndCellular ? 1 : 0)
                 }
             }
             
             HStack {
-                Button(action: {}) {
+                Button {
+                    cart.decrement(product: product)
+                } label: {
                     Image(systemName: "minus")
                         .font(.system(size: 18, weight: .bold))
                         .padding(8)
@@ -100,10 +113,12 @@ struct CartView: View {
                 .frame(width: 40)
                 .buttonStyle(.customBorderedBlack)
                 
-                Text("99")
+                Text(String(product.quantity))
                     .condensed(.heavy, size: 40)
                 
-                Button(action: {}) {
+                Button {
+                    cart.increment(product: product)
+                } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 18, weight: .bold))
                         .padding(3)
@@ -131,9 +146,9 @@ struct CartView: View {
                     Spacer()
                     
                     Text("$")
-                        .bold()
-                    + Text("999.99")
-                        .bold(ofSize: 18)
+                        .ultraLight()
+                    + Text(String(format: "%.2f", cart.total))
+                        .customBold(ofSize: 18)
                 }
                 
                 HStack {
@@ -143,9 +158,9 @@ struct CartView: View {
                     Spacer()
                     
                     Text("$")
-                        .bold()
-                    + Text("999.99")
-                        .bold(ofSize: 18)
+                        .ultraLight()
+                    + Text(String(format: "%.2f", cart.getTax()))
+                        .customBold(ofSize: 18)
                 }
                 
                 Divider()
@@ -156,11 +171,13 @@ struct CartView: View {
                             .condensed(.black, size: 24)
                         
                         Spacer()
-                        
-                        Text("$")
-                            .ultraLight(ofSize: 18)
-                        + Text("999.99")
-                            .bold(ofSize: 50)
+                        Text(String(format: "%.2f", cart.getOrderTotal()))
+                            .customBold(ofSize: 50)
+                            .overlay(alignment: .topLeading) {
+                                Text("$")
+                                    .ultraLight(ofSize: 18)
+                                    .offset(x: -8, y: 10)
+                            }
                     }
                 }
             }
@@ -172,4 +189,5 @@ struct CartView: View {
 
 #Preview {
     CartView()
+        .environment(ShoppingCart())
 }

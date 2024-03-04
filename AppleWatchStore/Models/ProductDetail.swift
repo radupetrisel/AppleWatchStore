@@ -13,6 +13,10 @@ final class ProductDetail {
     var selectedWristSize: WristSize?
     var selectedAppleCare: ProductAppleCareType = .none
     var selectedGPSCellular: ProductCellularType = .none
+    
+    var hasAddedToCart: Bool = false
+    
+    func addToCartCheck() -> Bool { selectedCaseSize != nil && selectedWristSize != nil && selectedGPSCellular != .none }
 }
 
 enum ProductAppleCareType: String {

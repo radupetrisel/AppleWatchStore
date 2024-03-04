@@ -13,6 +13,7 @@ struct AppleWatchStoreApp: App {
     @State private var manager = DataManager()
     @State private var productsFilter = ProductsFilter()
     @State private var productDetail = ProductDetail()
+    @State private var cart = ShoppingCart()
     
     var body: some Scene {
         WindowGroup {
@@ -20,6 +21,7 @@ struct AppleWatchStoreApp: App {
                 .environment(manager)
                 .environment(productsFilter)
                 .environment(productDetail)
+                .environment(cart)
                 .modelContainer(manager.modelContainer)
                 .task {
                     await manager.initializeData()
